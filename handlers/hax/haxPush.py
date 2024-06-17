@@ -41,8 +41,7 @@ def send_notification(title):
 def check_expiry():
     global expiry_date
     while True:
-        current_date = datetime.now()
-        days_until_expiry = (expiry_date - current_date).days
+        days_until_expiry = (expiry_date.date() - datetime.now().date()).days
         notification_template = "hax服务{}天后到期，快去续期！"
         message = notification_template.format(days_until_expiry)
         
@@ -70,7 +69,7 @@ def renew():
     if datetime.now() < notification_date:
         start_date = notification_date.strftime('%d')
         end_date = (notification_date + timedelta(days=2)).strftime('%d')
-        return f"请在{start_date}-{end_date}日内续期"
+        return f"请在{start_date}-{end_date}日内续期,过期时间为: {}".format(expiry_date.strftime('%Y-%m-%d'))"
 
 
     # 更新到期时间和通知日期

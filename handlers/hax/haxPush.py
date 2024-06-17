@@ -69,8 +69,7 @@ def renew():
     if datetime.now() < notification_date:
         start_date = notification_date.strftime('%d')
         end_date = (notification_date + timedelta(days=2)).strftime('%d')
-        return f"请在{start_date}-{end_date}日内续期,过期时间为: {}".format(expiry_date.strftime('%Y-%m-%d'))"
-
+        return f"请在{start_date}-{end_date}日内续期,过期日期为: {expiry_date.date()}"
 
     # 更新到期时间和通知日期
     expiry_date = datetime.now() + timedelta(days=5)

@@ -1,0 +1,3 @@
+import os
+
+API_TOKEN = os.getenv('TELEGRAM_API_TOKEN', '7315961704:AAFmaiy0UfKr1uAa0q01RTQCu8O6FdpSM8A')

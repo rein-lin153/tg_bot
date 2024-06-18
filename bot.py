@@ -6,6 +6,7 @@ from handlers.chatgpt import aiChat
 from handlers.hax import haxPush
 import json 
 from handlers.chatgpt.aiChat import handle_scenario_selection, handle_user_message
+from decorators import handle_telegram_exception
 
 # 设置日志
 logging.basicConfig(level=logging.INFO)
@@ -62,25 +63,6 @@ def handle_renew(message):
 def handle_choice(message):
     aiChat.handle_choice(bot, message)
 
-#捕获全局异常
-
-def handle_telegram_exception(retries=5, delay=5):
-    def decorator(func):
-        @wraps(func)
-        def wrapper(*args, **kwargs):
-            attempts = 0
-            while attempts < retries:
-                try:
-                    return func(*args, **kwargs)
-                except telebot.apihelper.ApiTelegramException as e:
-                    if e.error_code == 502:
-                        bot.send_message(chat_id, "发送错误,尝试重试...")
-                        attempts += 1
-                        time.sleep(delay)  # 等待一段时间后重试
-                    else:
-                        raise  
-        return wrapper
-    return decorator
 
 # 启动机器人
 if __name__ == '__main__':

@@ -29,32 +29,58 @@ bot = TeleBot(API_TOKEN)
 
 # 注册命令处理器
 @bot.message_handler(commands=['chat_start'])
+@handle_telegram_exception(retries=3, delay=2)
 def handle_chat(message):
     aiChat.handle_chat_command(bot, message, scenarios)
 
 @bot.message_handler(func=lambda message: message.text in scenarios.keys())
+@handle_telegram_exception(retries=3, delay=2)
 def handle_scenario(message):
     handle_scenario_selection(bot, message, scenarios, sessions)
 
 
 @bot.message_handler(func=lambda message: message.chat.id in sessions)
+@handle_telegram_exception(retries=3, delay=2)
 def handle_user(message):
     handle_user_message(bot, message, sessions)
 
     
 @bot.message_handler(commands=['chat_end'])
+@handle_telegram_exception(retries=3, delay=2)
 def handle_chat_end(message):
     aiChat.handle_chat_end_command(bot, message, "-", sessions)
 
 
 @bot.message_handler(commands=['hax_renewed'])
+@handle_telegram_exception(retries=3, delay=2)
 def handle_renew(message):
     haxPush.handle_renew_succeed(bot, message)
 
 # 注册消息处理器
 @bot.message_handler(func=lambda message: message.text and message.text.split()[0].isdigit())
+@handle_telegram_exception(retries=3, delay=2)
 def handle_choice(message):
     aiChat.handle_choice(bot, message)
+
+#捕获全局异常
+
+def handle_telegram_exception(retries=5, delay=5):
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            attempts = 0
+            while attempts < retries:
+                try:
+                    return func(*args, **kwargs)
+                except telebot.apihelper.ApiTelegramException as e:
+                    if e.error_code == 502:
+                        bot.send_message(chat_id, "发送错误,尝试重试...")
+                        attempts += 1
+                        time.sleep(delay)  # 等待一段时间后重试
+                    else:
+                        raise  
+        return wrapper
+    return decorator
 
 # 启动机器人
 if __name__ == '__main__':

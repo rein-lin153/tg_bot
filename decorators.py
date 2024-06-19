@@ -12,6 +12,8 @@ def handle_telegram_exception(retries=5, delay=5):
         @wraps(func)
         def wrapper(*args, **kwargs):
             attempts = 0
+            message = args[0]
+            chat_id = message.chat.id  # 从 message 对象中获取 chat_id
             while attempts < retries:
                 try:
                     return func(*args, **kwargs)

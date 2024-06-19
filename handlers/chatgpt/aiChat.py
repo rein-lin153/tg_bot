@@ -3,6 +3,7 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemo
 from telebot import TeleBot
 import json
 
+
 def handle_chat_command(bot, message, scenarios):
     markup = ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
 
@@ -86,9 +87,16 @@ def send_api_request(session_messages):
         "temperature": 1.5,
         "presence_penalty": 0.8
     }
-    
-    response = requests.post("http://[2602:294:0:b7:1234:1234:4c09:0001]:8080/v1/chat/completions", json=payload)
-    
+
+    url = "http://localhost:8000/v1/chat/completions"
+
+    token = "e1b4cf0e4dc27f3a8b2011901fa65f820a0b5442@eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY3RpdmF0ZWQiOnRydWUsImFnZSI6MSwiYmFuZWQiOmZhbHNlLCJjcmVhdGVfYXQiOjE3MTg4MzAwOTksImV4cCI6MTcxODgzMTg5OSwibW9kZSI6Miwib2FzaXNfaWQiOjExNDgyNjE4NTg3MDk1NDQ5NiwidmVyc2lvbiI6Mn0.L0hwyDG_ZjPAQdvYUpCrj7_RfUWhM12zrYeST-oYeSo...eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOjEwMjAwLCJkZXZpY2VfaWQiOiJlMWI0Y2YwZTRkYzI3ZjNhOGIyMDExOTAxZmE2NWY4MjBhMGI1NDQyIiwiZXhwIjoxNzIxNDIyMDk5LCJvYXNpc19pZCI6MTE0ODI2MTg1ODcwOTU0NDk2LCJwbGF0Zm9ybSI6IndlYiIsInZlcnNpb24iOjJ9.PuG-aUxRsIhNP8XmQiDOB0XK36RF2sk6wBWGt_aw71w"
+
+    headers = {
+    "Authorization": f"Bearer {token}"
+    }
+    response = requests.post(url, json=payload, headers=headers)
+        
     assistant_message = ""
     
     if response.status_code == 200:

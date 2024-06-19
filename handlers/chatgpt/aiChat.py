@@ -75,6 +75,10 @@ def handle_user_message(bot, message, sessions):
         "content": assistant_message
     })
     
+    # 检查会话消息数量，超过31条则删除第1条消息
+    if len(sessions[chat_id]["messages"]) > 31:
+        del sessions[chat_id]["messages"][1:3]
+
     # 发送助手消息给用户
     bot.send_message(chat_id, assistant_message)
     

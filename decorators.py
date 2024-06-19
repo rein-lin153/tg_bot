@@ -1,10 +1,10 @@
 import time
-from telebot import TeleBot 
+import telebot
 from functools import wraps
 from config import API_TOKEN
 
 # 初始化机器人
-bot = TeleBot(API_TOKEN)
+bot = telebot.TeleBot(API_TOKEN)
 
 #捕获全局异常
 def handle_telegram_exception(retries=5, delay=5):

@@ -67,5 +67,9 @@ def handle_choice(message):
 # 启动机器人
 if __name__ == '__main__':
     logger.info("Starting bot")
-    bot.polling()
-
+    while True:
+        try:
+            bot.polling()
+        except Exception as e:
+            logger.exception("An unexpected error occurred:")
+            time.sleep(5)  # 等待一段时间后重试

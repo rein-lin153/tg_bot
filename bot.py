@@ -1,5 +1,6 @@
 import logging
 import requests
+import time
 from telebot import TeleBot
 from config import API_TOKEN
 from handlers.chatgpt import aiChat
@@ -72,4 +73,7 @@ if __name__ == '__main__':
             bot.polling()
         except Exception as e:
             logger.exception("An unexpected error occurred:")
+            time.sleep(5)  # 等待一段时间后重试
+        except ReadTimeout:
+            logger.warning("Read timeout occurred. Retrying in 5 seconds...")
             time.sleep(5)  # 等待一段时间后重试

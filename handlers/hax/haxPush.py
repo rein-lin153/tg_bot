@@ -7,7 +7,7 @@ import time
 SERVER_CHAN_API_URL = "https://sctapi.ftqq.com/SCT250564TkWvOCFYKkHe0QGOUo9Pw9C1x.send"
 
 # 设置初始到期时间
-expiry_date = datetime(2024, 6, 24)
+expiry_date = datetime(2024, 6, 25)
 
 # 计算到期时间的前三天
 def calculate_notification_date():

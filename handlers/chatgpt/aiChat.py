@@ -2,11 +2,7 @@ import requests
 from telebot.types import ReplyKeyboardMarkup ,KeyboardButton, ReplyKeyboardRemove, InlineKeyboardMarkup, InlineKeyboardButton
 from telebot import TeleBot
 import json
-import paramiko
-from telegram import InputFile
 import os
-from minio import Minio
-from minio.error import S3Error
 from urllib.request import urlopen
 import re
 import random

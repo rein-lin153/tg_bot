@@ -146,7 +146,7 @@ def handle_user_message(bot, message, sessions):
     
 
 def generate_and_send_voice_message(assistant_message):
-    tts_url = 'http://127.0.0.1:9966/tts'
+    tts_url = 'http://localhost:9966/tts'
     tts_data = {
         "text": assistant_message,
         "prompt": "",

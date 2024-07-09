@@ -8,6 +8,7 @@ from api_handler import send_chat_request, get_model_name, get_system_message
 from config import TELEGRAM_BOT_TOKEN, MODEL_MAPPING, STYLE_MAPPING
 import uuid
 from datetime import datetime
+import re
 
 
 # 在全局范围内创建一个字典来存储所有用户的对话历史
@@ -91,7 +92,8 @@ async def handle_style_selection(update: Update, context: ContextTypes.DEFAULT_T
             'start_time': datetime.now(),
             'model': selected_model,
             'style': user_choice,
-            'history': []
+            'history': [{"role": "system", "content": get_system_message(user_choice)}],
+            'title': "新对话"  # 初始化标题
         }
 
         # 对于 Qwen 模型，初始化 conversation_id 为 None
@@ -123,15 +125,33 @@ async def handle_chat_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         return
 
     chat_info = all_user_chats[user_id][chat_id]
-    
-    # 记录用户消息到历史
-    chat_info['history'].append({"role": "user", "content": user_message})
-
-    # 处理消息并获取回复
     selected_model = chat_info['model']
     selected_style = chat_info['style']
     model_name = get_model_name(selected_model)
     system_message = get_system_message(selected_style)
+
+    # 记录用户消息到历史
+    chat_info['history'].append({"role": "user", "content": user_message})
+
+    # 检查历史长度
+    if len(chat_info['history']) >= 50:
+        # 生成总结
+        summary = await generate_summary(chat_info, model_name)
+        
+        # 清空历史并插入总结
+        chat_info['history'] = [
+            {"role": "system", "content": system_message},
+            {"role": "assistant", "content": f"以下是之前对话的总结：\n\n{summary}"}
+        ]
+        
+        # 通知用户
+        await update.message.reply_text("对话历史已经很长，我已经总结了之前的对话。让我们继续吧！")
+    
+    # 检查是否需要生成标题（每20条消息）
+    if len(chat_info['history']) % 10 == 0:
+        title = await generate_title(chat_info, model_name)
+        chat_info['title'] = title
+        await update.message.reply_text(f"已为当前对话生成标题：{title}")
 
     if model_name == "qwen":
         # 对于 Qwen 模型，使用 conversation_id
@@ -140,15 +160,15 @@ async def handle_chat_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         if response and 'id' in response:
             # 更新 conversation_id，使用 response 中的 id 字段
             chat_info['conversation_id'] = response['id']
-        
-        # 从 Qwen 响应中提取 bot_response
-        bot_response = response.get('choices', [{}])[0].get('message', {}).get('content', '对不起，我无法生成回复。')
     else:
         # 对于其他模型，使用 conversation_history
         response = send_chat_request(model_name, user_message, system_message, conversation_history=chat_info['history'])
-        
-        # 从其他模型响应中提取 bot_response
-        bot_response = response.get('choices', [{}])[0].get('message', {}).get('content', '对不起，我无法生成回复。')
+
+
+    # 从响应中提取 bot_response
+    bot_response = response.get('choices', [{}])[0].get('message', {}).get('content', '对不起，我无法生成回复。')
+    # 删除 "你的描述" 部分
+    bot_response = remove_description(bot_response)
 
     if bot_response:
         # 记录助手回复到历史
@@ -156,6 +176,45 @@ async def handle_chat_message(update: Update, context: ContextTypes.DEFAULT_TYPE
         await update.message.reply_text(bot_response)
     else:
         await update.message.reply_text("抱歉，处理您的请求时出现了问题。请稍后再试。")
+
+
+async def generate_title(chat_info, model_name):
+    title_request = "请为以下对话生成一个简短的标题（不超过20个字符）：\n"
+    # 只使用最近的10条消息来生成标题
+    recent_messages = chat_info['history'][-10:]
+    for message in recent_messages:
+        if message['role'] != 'system':
+            title_request += f"\n{message['role']}: {message['content'][:50]}..."  # 只使用每条消息的前50个字符
+
+    system_message = get_system_message(chat_info['style'])
+    response = send_chat_request(model_name, title_request, system_message)
+
+    if response:
+        title = response.get('choices', [{}])[0].get('message', {}).get('content', '未命名对话')
+        return title[:20]  # 确保标题不超过20个字符
+    else:
+        return "未命名对话"
+
+def remove_description(text):
+    # 使用正则表达式匹配并删除 "你的描述：" 或 "你的描述:" 及其后面的内容
+    pattern = r'你的描述.*?(?=\n|$)'
+    return re.sub(pattern, '', text, flags=re.DOTALL).strip()
+
+async def generate_summary(chat_info, model_name):
+    summary_request = "请总结以下对话的主要内容，保持简洁但包含关键信息："
+    for message in chat_info['history']:
+        if message['role'] != 'system':
+            summary_request += f"\n{message['role']}: {message['content']}"
+    
+    system_message = get_system_message(chat_info['style'])
+    response = send_chat_request(model_name, summary_request, system_message)
+    
+    if response:
+        summary = response.get('choices', [{}])[0].get('message', {}).get('content', '无法生成总结。')
+        return summary
+    else:
+        return "无法生成总结。"
+
 
 
 async def chat_list(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -167,7 +226,8 @@ async def chat_list(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     chat_list = []
     for chat_id, chat_info in all_user_chats[user_id].items():
         if chat_info['history']:  # 只有有历史记录的对话才显示
-            chat_list.append(f"/restore_{chat_id[:8]} - 日期: {chat_info['start_time'].strftime('%Y-%m-%d %H:%M')} - 模型: {chat_info['model']} - Style: {chat_info['style']}")
+            title = chat_info.get('title', '未命名对话')
+            chat_list.append(f"/restore_{chat_id[:8]} - {title} - 日期: {chat_info['start_time'].strftime('%Y-%m-%d %H:%M')} - 模型: {chat_info['model']} - Style: {chat_info['style']}")
     
     if chat_list:
         await update.message.reply_text("您的历史对话列表:\n" + "\n".join(chat_list))
@@ -266,7 +326,7 @@ async def chat_end(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     logger.info(f"Chat ended for user {user_id}, chat_id: {chat_id}")
 
 def main() -> None:
-    application = Application.builder().token(TOKEN).build()
+    application = Application.builder().token(TOKEN).read_timeout(30).write_timeout(30).build()
 
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("chat_start", chat_start))

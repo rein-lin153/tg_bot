@@ -2,7 +2,7 @@
 
 TELEGRAM_BOT_TOKEN = "7315961704:AAFmaiy0UfKr1uAa0q01RTQCu8O6FdpSM8A"
 
-API_URL = "http://localhost:8000/v1/chat/completions"
+API_URL = "http://[2602:294:0:b7:1234:1234:4c09:0001]:8000/v1/chat/completions"
 
 API_TOKENS = {
     "yuewen_chat": "e1b4cf0e4dc27f3a8b2011901fa65f820a0b5442@eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhY3RpdmF0ZWQiOnRydWUsImFnZSI6MSwiYmFuZWQiOmZhbHNlLCJjcmVhdGVfYXQiOjE3MTg4MzAwOTksImV4cCI6MTcxODgzMTg5OSwibW9kZSI6Miwib2FzaXNfaWQiOjExNDgyNjE4NTg3MDk1NDQ5NiwidmVyc2lvbiI6Mn0.L0hwyDG_ZjPAQdvYUpCrj7_RfUWhM12zrYeST-oYeSo...eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBfaWQiOjEwMjAwLCJkZXZpY2VfaWQiOiJlMWI0Y2YwZTRkYzI3ZjNhOGIyMDExOTAxZmE2NWY4MjBhMGI1NDQyIiwiZXhwIjoxNzIxNDIyMDk5LCJvYXNpc19pZCI6MTE0ODI2MTg1ODcwOTU0NDk2LCJwbGF0Zm9ybSI6IndlYiIsInZlcnNpb24iOjJ9.PuG-aUxRsIhNP8XmQiDOB0XK36RF2sk6wBWGt_aw71w",
@@ -11,9 +11,9 @@ API_TOKENS = {
 }
 
 MODEL_MAPPING = {
-    "跃问YueWen": "yuewen_chat",
+    "跃问YueWen": "gpt-3.5-turbo-16k",
     "阿里通义 (Qwen)": "qwen",
-    "DeepSeek": "deepseek_chat"
+    "DeepSeek": "gpt-3.5-turbo-16k"
 }
 
 STYLE_MAPPING = {

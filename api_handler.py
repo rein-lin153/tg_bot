@@ -27,12 +27,12 @@ def send_chat_request(model, user_message, system_message="", conversation_histo
         if conversation_id:
             data["conversation_id"] = conversation_id
     else:
+        messages = conversation_history if conversation_history else []
+        if not any(msg["role"] == "system" for msg in messages):
+            messages.insert(0, {"role": "system", "content": system_message})
         data = {
             "model": model,
-            "messages": conversation_history if conversation_history else [
-                {"role": "system", "content": system_message},
-                {"role": "user", "content": user_message}
-            ],
+            "messages": messages,
             "stream": False
         }
     # 打印请求数据

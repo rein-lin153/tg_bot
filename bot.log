@@ -1,0 +1,92 @@
+2024-07-09 06:03:21,050 - __main__ - INFO - Starting the bot
+2024-07-09 06:03:50,658 - __main__ - INFO - Starting the bot
+2024-07-09 06:03:59,276 - __main__ - INFO - User 5572565379 ended chat
+2024-07-09 06:04:03,084 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 06:05:52,034 - __main__ - INFO - User 5572565379 started the bot
+2024-07-09 06:06:01,518 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 06:07:51,477 - __main__ - INFO - Bot stopped
+2024-07-09 06:07:54,267 - __main__ - INFO - Starting the bot
+2024-07-09 06:07:57,984 - __main__ - INFO - New chat started for user 5572565379 with chat_id 32504f57-35f7-444f-a07e-aacef647604a
+2024-07-09 06:08:01,791 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 06:08:10,026 - __main__ - INFO - User 5572565379 selected style: 暴躁祥哥
+2024-07-09 06:08:45,318 - __main__ - INFO - User 5572565379 ended chat
+2024-07-09 06:14:29,602 - __main__ - INFO - Bot stopped
+2024-07-09 06:14:34,604 - __main__ - INFO - Starting the bot
+2024-07-09 06:14:58,719 - __main__ - INFO - New chat started for user 5572565379 with chat_id 2ce105eb-b4cc-4bc4-9e95-3156e3a89b37
+2024-07-09 06:15:00,612 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 06:15:06,227 - __main__ - INFO - User 5572565379 selected style: 翻译担当
+2024-07-09 06:16:07,906 - __main__ - INFO - User 5572565379 ended chat
+2024-07-09 06:18:47,715 - __main__ - INFO - Bot stopped
+2024-07-09 06:18:49,857 - __main__ - INFO - Starting the bot
+2024-07-09 06:18:55,313 - __main__ - INFO - New chat started for user 5572565379 with chat_id 426b809a-cdfa-4ab5-870e-74a7ff0819b2
+2024-07-09 06:18:57,687 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 06:19:01,999 - __main__ - INFO - User 5572565379 selected style: 翻译担当
+2024-07-09 06:20:51,247 - __main__ - INFO - User 5572565379 ended chat
+2024-07-09 06:24:59,921 - __main__ - INFO - Bot stopped
+2024-07-09 06:27:57,213 - __main__ - INFO - Starting the bot
+2024-07-09 06:28:01,144 - __main__ - INFO - New chat started for user 5572565379 with chat_id 935c8524-c026-44d0-8eed-29a3679be189
+2024-07-09 06:28:03,444 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 06:28:12,037 - __main__ - INFO - User 5572565379 selected style: 翻译担当
+2024-07-09 06:29:42,372 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 935c8524-c026-44d0-8eed-29a3679be189
+2024-07-09 06:29:46,078 - __main__ - INFO - New chat started for user 5572565379 with chat_id 4e5cc783-c26d-4111-a4de-0486f7843500
+2024-07-09 06:30:26,386 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 935c8524-c026-44d0-8eed-29a3679be189
+2024-07-09 06:30:56,917 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 935c8524-c026-44d0-8eed-29a3679be189
+2024-07-09 06:30:58,773 - __main__ - INFO - New chat started for user 5572565379 with chat_id 19143a9b-f5a2-4e1a-853f-da00cff1276c
+2024-07-09 06:31:02,031 - __main__ - INFO - User 5572565379 selected style: 跃问YueWen
+2024-07-09 06:31:13,994 - __main__ - INFO - User 5572565379 selected style: DeepSeek
+2024-07-09 06:31:48,299 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 19143a9b-f5a2-4e1a-853f-da00cff1276c
+2024-07-09 06:31:49,579 - __main__ - INFO - New chat started for user 5572565379 with chat_id 8edfa369-7747-4def-a44f-000259939404
+2024-07-09 06:31:52,841 - __main__ - INFO - User 5572565379 selected style: DeepSeek
+2024-07-09 06:32:03,490 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 8edfa369-7747-4def-a44f-000259939404
+2024-07-09 06:32:53,687 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 935c8524-c026-44d0-8eed-29a3679be189
+2024-07-09 06:33:30,773 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 935c8524-c026-44d0-8eed-29a3679be189
+2024-07-09 06:58:23,997 - __main__ - INFO - New chat started for user 5572565379 with chat_id 64224f6b-fee4-4553-aa61-cc7d5cf6bdb6
+2024-07-09 06:58:27,687 - __main__ - INFO - User 5572565379 selected style: 跃问YueWen
+2024-07-09 07:03:26,178 - __main__ - INFO - Bot stopped
+2024-07-09 07:03:55,107 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:06:20,027 - __main__ - INFO - Bot stopped
+2024-07-09 07:06:26,786 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:06:31,865 - __main__ - INFO - User 5572565379 selected model: 跃问YueWen
+2024-07-09 07:06:37,738 - __main__ - INFO - User 5572565379 selected style: 暴躁祥哥
+2024-07-09 07:07:06,806 - __main__ - INFO - Chat ended for user 5572565379, chat_id: ad9ce478-5568-4416-b4ea-4aaee96a21a7
+2024-07-09 07:07:33,676 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:07:39,776 - __main__ - INFO - User 5572565379 selected model: DeepSeek
+2024-07-09 07:07:44,127 - __main__ - INFO - User 5572565379 selected style: 暴躁祥哥
+2024-07-09 07:09:20,924 - __main__ - INFO - Bot stopped
+2024-07-09 07:09:26,982 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:09:29,868 - __main__ - INFO - User 5572565379 selected model: DeepSeek
+2024-07-09 07:09:36,312 - __main__ - INFO - User 5572565379 selected style: 暴躁祥哥
+2024-07-09 07:10:28,773 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 101a17d1-8f44-475d-896c-b87cc5ed71a7
+2024-07-09 07:11:26,209 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 101a17d1-8f44-475d-896c-b87cc5ed71a7
+2024-07-09 07:11:28,754 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:11:32,388 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 07:11:39,649 - __main__ - INFO - User 5572565379 selected style: 暴躁祥哥
+2024-07-09 07:21:19,539 - __main__ - INFO - User 5572565379 selected model: 那阿里是啥玩意
+2024-07-09 07:21:24,130 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:21:28,870 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 07:21:33,435 - __main__ - INFO - User 5572565379 selected style: 暴躁祥哥
+2024-07-09 07:32:15,261 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:32:17,449 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 07:32:20,954 - __main__ - INFO - User 5572565379 selected style: 暴躁祥哥
+2024-07-09 07:34:57,307 - __main__ - INFO - Bot stopped
+2024-07-09 07:35:07,439 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:35:13,403 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 07:35:17,544 - __main__ - INFO - User 5572565379 selected style: 暴躁祥哥
+2024-07-09 07:39:01,888 - __main__ - INFO - Bot stopped
+2024-07-09 07:39:13,142 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:39:15,189 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 07:39:18,910 - __main__ - INFO - User 5572565379 selected style: 暴躁祥哥
+2024-07-09 07:41:32,136 - __main__ - INFO - Bot stopped
+2024-07-09 07:41:42,060 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:41:43,629 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 07:41:46,961 - __main__ - INFO - User 5572565379 selected style: 暴躁祥哥
+2024-07-09 07:45:39,184 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 8b6a6302-de45-4520-be0a-1138d1a5019f
+2024-07-09 07:45:41,454 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:45:43,120 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 07:45:49,929 - __main__ - INFO - User 5572565379 selected style: 不受约束
+2024-07-09 07:46:21,400 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 4d7e3866-de9f-4870-b782-6e69275e9f4f
+2024-07-09 07:53:36,683 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 8b6a6302-de45-4520-be0a-1138d1a5019f
+2024-07-09 07:53:38,851 - __main__ - INFO - User 5572565379 initiated chat
+2024-07-09 07:53:40,603 - __main__ - INFO - User 5572565379 selected model: 阿里通义 (Qwen)
+2024-07-09 07:53:52,273 - __main__ - INFO - User 5572565379 selected style: 翻译担当
+2024-07-09 07:54:46,689 - __main__ - INFO - Chat ended for user 5572565379, chat_id: 26e08cb0-6300-418e-b3fe-a90147da557f
